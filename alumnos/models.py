@@ -3,36 +3,36 @@ from django.db import models
 # Create your models here.
 
 class Carreras(models.Model):
-    ID_carrera= models.AutoField(primary_key=True)
-    nombre= models.TextField()
-    duracion=models.IntegerField()
+    id_carrera= models.AutoField(primary_key=True)
+    nombre= models.CharField(max_length=40)
+    duracion=models.CharField(max_length=10)
     horario= models.CharField(max_length=20)
-    precio=models.CharField(max_length=10)
+    precio=models.IntegerField()
     
 class Alumnos(models.Model):
-    DNI= models.IntegerField(primary_key=True)
+    dni= models.IntegerField(primary_key=True)
     nombre= models.CharField(max_length=25)
     apellido= models.CharField(max_length=25)
-    edad= models.IntegerField()
-    ID_carrera= models.ForeignKey(Carreras, on_delete=models.CASCADE)
+    edad= models.CharField(max_length=2)
+    id_carrera= models.ForeignKey(Carreras, on_delete=models.CASCADE)
     
 class Materias(models.Model):
-    ID_materia=models.AutoField(primary_key=True)
+    id_materia=models.AutoField(primary_key=True)
     nombre= models.CharField(max_length=40)
     duracion= models.CharField(max_length=50)
     horario=models.CharField(max_length=20)
-    ID_carrera= models.ForeignKey(Carreras, on_delete=models.CASCADE)
+    id_carrera= models.ForeignKey(Carreras, on_delete=models.CASCADE)
     
 class Matricula(models.Model):
-    ID_matricula= models.AutoField(primary_key=True)
-    precio_matricula= models.IntegerField()
-    precio_seguro=models.IntegerField()
-    DNI= models.ForeignKey(Alumnos,on_delete=models.CASCADE)
+    id_matricula= models.AutoField(primary_key=True)
+    precio_matricula= models.CharField(max_length=11)
+    precio_seguro=models.CharField(max_length=10)
+    dni= models.ForeignKey(Alumnos,on_delete=models.CASCADE)
     
 class Pagos(models.Model):
-    ID_pagos=models.AutoField(primary_key=True)
-    DNI= models.ForeignKey(Alumnos, on_delete=models.CASCADE)
-    ID_carrera= models.ForeignKey(Carreras, on_delete=models.CASCADE)
+    id_pagos=models.AutoField(primary_key=True)
+    dni= models.ForeignKey(Alumnos, on_delete=models.CASCADE)
+    id_carrera= models.ForeignKey(Carreras, on_delete=models.CASCADE)
     monto= models.CharField(max_length=10)
     fecha= models.DateField()
     observacion= models.CharField(max_length=50)
