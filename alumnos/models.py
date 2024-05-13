@@ -28,6 +28,9 @@ class Matricula(models.Model):
     precio_matricula= models.CharField(max_length=11)
     precio_seguro=models.CharField(max_length=10)
     dni= models.ForeignKey(Alumnos,on_delete=models.CASCADE)
+
+class Metodo_pago(models.Model):
+    tipo= models.CharField(max_length=15)
     
 class Pagos(models.Model):
     id_pagos=models.AutoField(primary_key=True)
@@ -36,7 +39,7 @@ class Pagos(models.Model):
     monto= models.CharField(max_length=10)
     fecha= models.DateField()
     observacion= models.CharField(max_length=50)
+    metodo_de_pago=models.ForeignKey(Metodo_pago, on_delete=models.CASCADE)
     
-class Metodo_pago(models.Model):
-    tipo= models.CharField(max_length=15)
+
     
