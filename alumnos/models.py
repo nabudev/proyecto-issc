@@ -37,5 +37,6 @@ class Pagos(models.Model):
     fecha= models.DateField()
     observacion= models.CharField(max_length=50)
     
-
+class Metodo_pago(models.Model):
+    tipo= models.CharField(max_length=15)
     
