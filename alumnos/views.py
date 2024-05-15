@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from .models import Pagos, Alumnos
 # Create your views here.
@@ -6,12 +6,8 @@ from .models import Pagos, Alumnos
 def index(request):
     return render(request, 'index.html')
 
-def pagos(request):
-    pagos = Pagos.objects.all()
-    context = {'pagos': pagos}
+def pagos(request, dni):
+    alumno= get_object_or_404(Alumnos, dni=dni)
+    pagos = Pagos.objects.filter(dni=alumno)
+    context = {'alumno': alumno, 'pagos': pagos}
     return render(request, 'pagos.html', context)
-
-def alumnos(request):
-    alumnos= list(Alumnos.objects.values())
-    context= {'alumnos': alumnos}
-    return render(request, 'alumnos.html', context)

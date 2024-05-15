@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista de Pagos</title>
+    <title>Pagos de {{ alumno.nombre }} {{ alumno.apellido }}</title>
 </head>
 <body>
-    <h1>Lista de Pagos</h1>
+    <h1>Pagos de {{ alumno.nombre }} {{ alumno.apellido }}</h1>
     <ul>
         {% for pago in pagos %}
-            <li>Monto: {{ pago.monto }}, Fecha: {{ pago.fecha }}, Observacion: {{ pago.observacion }}</li>
+            <li>
+                Monto: {{ pago.monto }},
+                Fecha: {{ pago.fecha }}
+            </li>
         {% endfor %}
     </ul>
 </body>
