@@ -4,12 +4,14 @@ from .models import Pagos, Alumnos
 # Create your views here.
 
 def index(request):
-    return HttpResponse('<h1>Bienvenidos a la gestion alumnos</h1>')
+    return render(request, 'index.html')
 
 def pagos(request):
-    pagos=list(Pagos.objects.values())
-    return JsonResponse(pagos, safe=False)
+    pagos = Pagos.objects.all()
+    context = {'pagos': pagos}
+    return render(request, 'pagos.html', context)
 
 def alumnos(request):
     alumnos= list(Alumnos.objects.values())
-    return JsonResponse(alumnos, safe=False)
+    context= {'alumnos': alumnos}
+    return render(request, 'alumnos.html', context)

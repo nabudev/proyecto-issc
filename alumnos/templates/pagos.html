@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Pagos</title>
+</head>
+<body>
+    <h1>Lista de Pagos</h1>
+    <ul>
+        {% for pago in pagos %}
+            <li>Monto: {{ pago.monto }}, Fecha: {{ pago.fecha }}, Observacion: {{ pago.observacion }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
