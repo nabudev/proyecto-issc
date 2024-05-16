@@ -52,6 +52,9 @@ class Metodo_pago(models.Model):
 class Meses(models.Model):
     mes= models.CharField(max_length=20)
     
+    def __str__(self):
+        return self.mes
+    
 class Pagos(models.Model):
     id_pagos=models.AutoField(primary_key=True)
     dni= models.ForeignKey(Alumnos, on_delete=models.CASCADE)
