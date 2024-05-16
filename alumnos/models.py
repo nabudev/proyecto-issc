@@ -48,6 +48,9 @@ class Metodo_pago(models.Model):
     
     def __str__(self):
         return self.tipo
+
+class Meses(models.Model):
+    mes= models.CharField(max_length=20)
     
 class Pagos(models.Model):
     id_pagos=models.AutoField(primary_key=True)
@@ -57,9 +60,13 @@ class Pagos(models.Model):
     fecha= models.DateField()
     observacion= models.CharField(max_length=50)
     metodo_de_pago=models.ForeignKey(Metodo_pago, on_delete=models.CASCADE)
+    mes= models.ForeignKey(Meses, on_delete=models.CASCADE)
     
     def __str__(self):
-        return str(self.dni.dni)
+        return str(self.dni.dni) + ' ' + str(self.fecha)
+    
+
+    
 
     
 
