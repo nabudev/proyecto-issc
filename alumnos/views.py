@@ -4,7 +4,10 @@ from .models import Pagos, Alumnos
 # Create your views here.
 
 def index(request):
-    return HttpResponse('<h1>Bienvenidos a la gestion alumnos</h1>')
+    return render(request, 'index.html')
+
+def alumnos(request):
+    return render(request, 'alumnos.html')
 
 def pagos(request, dni):
     alumno= get_object_or_404(Alumnos, dni=dni)

@@ -1,19 +1,38 @@
-<!DOCTYPE html>
+{% extends "layouts/navbar.html" %}
+
+{% block content %}
+
 <html>
 <head>
     <title>Pagos de {{ alumno.nombre }} {{ alumno.apellido }}</title>
 </head>
 <body>
     <h1>Pagos de {{ alumno.nombre }} {{ alumno.apellido }}</h1>
+    
     <ul>
         {% for pago in pagos %}
-            <li>
-                Monto: {{ pago.monto }},
-                Mes correspondiente: {{ pago.mes }},
-                Fecha: {{ pago.fecha }},
-                Observacion: {{ pago.observacion }}
-            </li>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Monto</th>
+                    <th>Mes</th>
+                    <th>Fecha del pago</th>
+                    <th>Observacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ pago.monto }}</td>
+                    <td>{{ pago.mes }}</td>
+                    <td>{{ pago.fecha }}</td>
+                    <td>{{ pago.observacion }}</td>
+                </tr>
+            </tbody>
+        </table>
         {% endfor %}
     </ul>
 </body>
 </html>
+
+{% endblock  %}
+
